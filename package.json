@@ -11,6 +11,7 @@
     "compile_ts_on_change": "tsc -w",
     "run_ts": "tsc -w",
     "run_js": "nodemon --inspect ./dist/bot.js",
+    "all": "tsc -w & nodemon --inspect ./dist/bot.js",
     "api": "node src/manualSettings/services/index.js"
   },
   "keywords": [],
