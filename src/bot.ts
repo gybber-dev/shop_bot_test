@@ -1,33 +1,29 @@
 import { Bot } from 'grammy';
 import * as process from 'process';
 import dotenv from 'dotenv';
+import { onlyAccept } from './mwPlugin';
 
 dotenv.config();
 
 const run = async () => {
-  const { TOKEN } = process.env;
-  if (TOKEN) {
-    const bot = new Bot(TOKEN);
-    bot.command('start', ctx => ctx.reply('Started!'));
+	const { TOKEN } = process.env;
+	if (TOKEN) {
+		const bot = new Bot(TOKEN);
 
-    /** COMMANDS **/
-    /* https://grammy.dev/guide/commands.html#usage */
+	/** PLUGINS **/
 
-    // set commands set for your bot
-    await bot.api.setMyCommands([
-      { command: 'start', description: 'Start the bot' },
-      { command: 'help', description: 'Show help text' },
-      { command: 'settings', description: 'Open settings' },
-    ]);
+	/* https://grammy.dev/plugins/guide.html#designing-a-dummy-middleware-plugin */
 
-    // define command's arguments
-    bot.command('add', (ctx) => {
-      // `item` will be "apple pie" if a user sends "/add apple pie".
-      const args = ctx.match;
-      console.log('you sent command "add" with the following arguments', args);
-    });
-    await bot.start();
-  }
+	// There are 2 type of plugins: middlewares and transformer plugins.
+	// The first ones are a listener. Seconds transform some data
+
+	// Using middleware plugin. It detects if user's name contain the following string "grammY'
+		bot.use(onlyAccept('grammY'));
+
+		bot.on('message', ctx => ctx.reply('You passed the middleware plugin'));
+
+		await bot.start();
+	}
 };
 
 run();
