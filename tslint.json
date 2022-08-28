@@ -4,6 +4,9 @@
         "./node_modules/tslint-config-airbnb"
     ],
     "jsRules": {},
-    "rules": {},
+    "rules": {
+        "ter-indent": [true, "tab"],
+        "indent": [true, "tabs", 4]
+    },
     "rulesDirectory": []
 }
