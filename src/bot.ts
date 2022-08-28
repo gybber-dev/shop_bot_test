@@ -11,7 +11,6 @@ const run = async () => {
 		const bot = new Bot(TOKEN);
 
 	/** PLUGINS **/
-
 	/* https://grammy.dev/plugins/guide.html#designing-a-dummy-middleware-plugin */
 
 	// There are 2 type of plugins: middlewares and transformer plugins.
