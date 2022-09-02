@@ -10,14 +10,15 @@
     "compile_ts_once": "tsc",
     "compile_ts_on_change": "tsc -w",
     "run_ts": "tsc -w",
-    "run_js": "nodemon --inspect ./dist/bot.js",
-    "all": "tsc -w & nodemon --inspect ./dist/bot.js",
+    "run_js": "nodemon --inspect ./dist/index.js",
+    "all": "tsc -w & nodemon --inspect ./dist/index.js",
     "api": "node src/manualSettings/services/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@grammyjs/menu": "^1.0.2",
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
